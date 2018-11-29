@@ -277,3 +277,87 @@
 [2018-11-29] ==>  Preparing: delete from students where stud_id = ?; 
 [2018-11-29] ==> Parameters: 4(Integer)
 [2018-11-29] <==    Updates: 1
+[2018-11-29] testOpenSession()
+[2018-11-29] session org.apache.ibatis.session.defaults.DefaultSqlSession@5a8e21c0
+[2018-11-29] test01selectStudentByNo()
+[2018-11-29] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students WHERE stud_id = ?; 
+[2018-11-29] ==> Parameters: 1(Integer)
+[2018-11-29] <==    Columns: studId, name, email, dob, phone
+[2018-11-29] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-11-29] <==      Total: 1
+[2018-11-29] test02selectByAll()
+[2018-11-29] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students 
+[2018-11-29] ==> Parameters: 
+[2018-11-29] <==    Columns: studId, name, email, dob, phone
+[2018-11-29] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-11-29] <==        Row: 2, Douglas, douglas@gmail.com, 1990-08-15, 789-456-1234
+[2018-11-29] <==        Row: 3, Timothy, test@test.co.kr, 2018-11-29, 123-123-1234
+[2018-11-29] <==        Row: 7, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==        Row: 8, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==        Row: 9, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==        Row: 10, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==      Total: 7
+[2018-11-29] ==>  Preparing: insert into students(stud_id, name, email, phone, dob) values(?, ?, ?, ?, ?); 
+[2018-11-29] ==> Parameters: 4(Integer), ȫ�浿1(String), test@test.co.kr(String), 010-456-7890(String), 1990-03-28 17:34:35.544(Timestamp)
+[2018-11-29] <==    Updates: 1
+[2018-11-29] ==>  Preparing: update students set name = ?, email = ?, phone = ?, dob = ? where stud_id = ?; 
+[2018-11-29] ==> Parameters: Timothy(String), test@test.co.kr(String), 123-123-1234(String), 2018-11-29 17:34:35.556(Timestamp), 4(Integer)
+[2018-11-29] <==    Updates: 1
+[2018-11-29] testOpenSession()
+[2018-11-29] session org.apache.ibatis.session.defaults.DefaultSqlSession@5a8e21c0
+[2018-11-29] test01selectStudentByNo()
+[2018-11-29] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students WHERE stud_id = ?; 
+[2018-11-29] ==> Parameters: 1(Integer)
+[2018-11-29] <==    Columns: studId, name, email, dob, phone
+[2018-11-29] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-11-29] <==      Total: 1
+[2018-11-29] test02selectByAll()
+[2018-11-29] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students 
+[2018-11-29] ==> Parameters: 
+[2018-11-29] <==    Columns: studId, name, email, dob, phone
+[2018-11-29] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-11-29] <==        Row: 2, Douglas, douglas@gmail.com, 1990-08-15, 789-456-1234
+[2018-11-29] <==        Row: 3, Timothy, test@test.co.kr, 2018-11-29, 123-123-1234
+[2018-11-29] <==        Row: 4, Timothy, test@test.co.kr, 2018-11-29, 123-123-1234
+[2018-11-29] <==        Row: 7, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==        Row: 8, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==        Row: 9, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==        Row: 10, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==      Total: 8
+[2018-11-29] ==>  Preparing: insert into students(stud_id, name, email, phone, dob) values(?, ?, ?, ?, ?); 
+[2018-11-29] ==> Parameters: 4(Integer), ȫ�浿1(String), test@test.co.kr(String), 010-456-7890(String), 1990-03-28 17:37:12.392(Timestamp)
+[2018-11-29] ==>  Preparing: update students set name = ?, email = ?, phone = ?, dob = ? where stud_id = ?; 
+[2018-11-29] ==> Parameters: Timothy(String), test@test.co.kr(String), 123-123-1234(String), 2018-11-29 17:37:12.403(Timestamp), 4(Integer)
+[2018-11-29] <==    Updates: 1
+[2018-11-29] ==>  Preparing: delete from students where stud_id = ?; 
+[2018-11-29] ==> Parameters: 4(Integer)
+[2018-11-29] <==    Updates: 1
+[2018-11-29] testOpenSession()
+[2018-11-29] session org.apache.ibatis.session.defaults.DefaultSqlSession@1d699549
+[2018-11-29] test01selectStudentByNo()
+[2018-11-29] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students WHERE stud_id = ?; 
+[2018-11-29] ==> Parameters: 1(Integer)
+[2018-11-29] <==    Columns: studId, name, email, dob, phone
+[2018-11-29] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-11-29] <==      Total: 1
+[2018-11-29] test02selectByAll()
+[2018-11-29] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students 
+[2018-11-29] ==> Parameters: 
+[2018-11-29] <==    Columns: studId, name, email, dob, phone
+[2018-11-29] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-11-29] <==        Row: 2, Douglas, douglas@gmail.com, 1990-08-15, 789-456-1234
+[2018-11-29] <==        Row: 3, Timothy, test@test.co.kr, 2018-11-29, 123-123-1234
+[2018-11-29] <==        Row: 7, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==        Row: 8, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==        Row: 9, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==        Row: 10, ȫ�浿1, test@test.co.kr, 1990-03-28, 010-456-7890
+[2018-11-29] <==      Total: 7
+[2018-11-29] ==>  Preparing: insert into students(stud_id, name, email, phone, dob) values(?, ?, ?, ?, ?); 
+[2018-11-29] ==> Parameters: 4(Integer), ȫ�浿1(String), test@test.co.kr(String), 010-456-7890(String), 1990-03-28 17:37:41.014(Timestamp)
+[2018-11-29] <==    Updates: 1
+[2018-11-29] ==>  Preparing: update students set name = ?, email = ?, phone = ?, dob = ? where stud_id = ?; 
+[2018-11-29] ==> Parameters: Timothy(String), test@test.co.kr(String), 123-123-1234(String), 2018-11-29 17:37:41.026(Timestamp), 4(Integer)
+[2018-11-29] <==    Updates: 1
+[2018-11-29] ==>  Preparing: delete from students where stud_id = ?; 
+[2018-11-29] ==> Parameters: 4(Integer)
+[2018-11-29] <==    Updates: 1
