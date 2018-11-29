@@ -2,6 +2,9 @@ package kr.or.yi.mybatis_dev_kbm.dto;
 
 import java.util.Date;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("Student")
 public class Student {
 	private int studId;
 	private String name;
