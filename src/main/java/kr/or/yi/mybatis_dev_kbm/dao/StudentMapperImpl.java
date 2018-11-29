@@ -2,8 +2,6 @@ package kr.or.yi.mybatis_dev_kbm.dao;
 
 import java.util.List;
 
-import javax.xml.stream.events.Namespace;
-
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.yi.mybatis_dev_kbm.dto.Student;
@@ -24,6 +22,37 @@ public class StudentMapperImpl implements StudentMapper {
 		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
 			return sqlSession.selectList(Namespace + ".selectStudentByAll");
 		}
+	}
+
+	@Override
+	public int insertStudent(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+			int res = sqlSession.insert(Namespace + ".insertStudent", student);
+			sqlSession.commit();
+			
+			return res;
+		}
+	}
+
+	@Override
+	public int updateStudent(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+			int res = sqlSession.update(Namespace + ".updateStudent", student);
+			sqlSession.commit();
+			
+			return res;
+		}
+	}
+
+	@Override
+	public int deleteStudent(int id) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+			int res = sqlSession.delete(Namespace + ".deleteStudent", id);
+			sqlSession.commit();
+			
+			return res;
+		}
+		
 	}
 
 }
