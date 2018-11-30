@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -69,5 +71,55 @@ public class StudentMapperTest extends AbstractTest {
 	public void test05deleteStudent() {
 		int deleteStudent = dao.deleteStudent(4);
 		Assert.assertSame(1, deleteStudent);
+	}
+	
+	@Test
+	public void test06SelectStudentByAllForResultMap() {
+		List<Student> lists = dao.selectStudentByAllForResultMap();
+		Assert.assertNotNull(lists);
+	}
+	
+	@Test
+	public void test07SelectStudentByAllForHashMap() {
+		List<Map<String, Object>> lists = dao.selectStudentByAllforHashMap();
+/*		for(Map<String, Object> m : lists) {
+//			System.out.println(m);
+			for(String s : m.keySet()) {
+				System.out.print(s + "\t" + m.get(s) + "\t");
+			}
+			System.out.println();
+		}*/
+		for(Map<String, Object> m : lists) {
+			for(Entry<String, Object> e : m.entrySet()) {
+				System.out.printf("%s->%s%n", e.getKey(), e.getValue());
+			}
+		}
+		
+		/*
+		 * System.out.println("list.size() => " + list.size());
+		 * for(int i = 0 ; i < list.size() ; i++){
+		 * 		Map<String, Object> m = list.get(i);
+		 * 		Iterator<String> it = m.keySet().iterator();	//반복
+		 *		//키 값 출력
+		 *		while(it.hasNext()){
+		 *			String key = it.next();
+		 *			System.out.println("key = " + key + ", value = " + m.get(key));
+		 *		}
+		 *	}
+		 * */
+	}
+	
+	@Test
+	public void test08SelectStudentByNoForResultMapExtends() {
+		Student student = new Student();
+		student.setStudId(1);
+		Student extStd = dao.selectStudentByNoForResultMapExtends(student);
+		Assert.assertNotNull(extStd);
+	}
+	
+	@Test
+	public void test09SelectStudentByNoForResultMapExtends2() {
+		Student extStd = dao.selectStudentByNoForResultMapExtends2(1);
+		Assert.assertNotNull(extStd);
 	}
 }

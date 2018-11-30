@@ -17,3 +17,10 @@ where stud_id = 4;
 
 delete from students
 where stud_id = 4;
+
+select * from addresses;
+select * from students;
+
+select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country
+from students s left outer join addresses a
+on s.ADDR_ID = a.ADDR_ID;
