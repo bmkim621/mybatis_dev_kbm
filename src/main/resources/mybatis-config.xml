@@ -5,6 +5,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<properties resource="application.properties" />
 	
+	<typeAliases>
+		<package name="kr.or.yi.mybatis_dev_kbm.dto"/>
+	</typeAliases>
+	
+	<typeHandlers>
+		<package name="kr.or.yi.mybatis_dev_kbm.typehandlers"/>
+	</typeHandlers>
+	
 	<environments default="development2">
 		<environment id="development1">
 			<transactionManager type="JDBC" />
@@ -28,5 +36,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	
 	<mappers>
+		<package name="kr.or.yi.mybatis_dev_kbm.dao"/>
 	</mappers>
 </configuration>
