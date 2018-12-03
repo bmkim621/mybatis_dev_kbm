@@ -9,4 +9,12 @@
 		<result property="dob" column="dob" />
 	</resultMap>
 	
+	<resultMap id="StudentWithAddressResult" type="Student" extends="StudentResult">
+		<result property="address.addrId" column="addr_id"/>
+		<result property="address.street" column="street" />
+		<result property="address.city" column="city" />
+		<result property="address.state" column="state" />
+		<result property="address.zip" column="zip" />
+		<result property="address.country" column="country" />
+	</resultMap>
 </mapper>

@@ -54,4 +54,28 @@ public interface StudentMapper {
 	@Select("select stud_id, name, email, phone, dob from students")
 	@ResultMap("mappers.StudentMapper.StudentResult")
 	List<Student> selectStudentByAllForMapper();
+	
+	
+	//
+	@Select("select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country from students s join addresses a on s.addr_id = a.addr_id")
+	@Results({
+			@Result(id = true, column = "stud_id", property = "studId"),
+			@Result(column = "name", property = "name"),
+			@Result(column = "email", property = "email"),
+			@Result(column = "phone", property = "phone"),
+			@Result(column = "dob", property = "dob"),
+			@Result(column = "addr_id", property = "address.addrId"),
+			@Result(column = "street", property = "address.street"),
+			@Result(column = "city", property = "address.city"),
+			@Result(column = "state", property = "address.state"),
+			@Result(column = "zip", property = "address.zip"),
+			@Result(column = "country", property = "address.country")
+	})
+	List<Student> selectStudentByAllForResultMaxExt();
+	
+	
+	//결과 매핑 확장
+	@Select("select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country from students s join addresses a on s.addr_id = a.addr_id")
+	@ResultMap("mappers.StudentMapper.StudentWithAddressResult")
+	List<Student> selectStudentByAllForResultMapExtXML();
 }

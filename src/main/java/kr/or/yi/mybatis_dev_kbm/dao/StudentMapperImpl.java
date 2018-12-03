@@ -72,4 +72,18 @@ public class StudentMapperImpl implements StudentMapper {
 			return sqlSession.selectList(namespace + ".selectStudentByAllForMapper");
 		}
 	}
+
+	@Override
+	public List<Student> selectStudentByAllForResultMaxExt() {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
+			return sqlSession.selectList(namespace + ".selectStudentByAllForResultMaxExt");
+		}
+	}
+
+	@Override
+	public List<Student> selectStudentByAllForResultMapExtXML() {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
+			return sqlSession.selectList(namespace + ".selectStudentByAllForResultMapExtXML");
+		}
+	}
 }

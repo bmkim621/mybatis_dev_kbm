@@ -21,7 +21,9 @@ public class StudentMapperTest extends AbstractTest {
 
 	@Test
 	public void test01SelectStudentById() {
-		log.debug("test01SelectStudentById()");
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+//		log.debug("test01SelectStudentById()");
 		Student newStd = new Student();
 		newStd.setStudId(2);
 		
@@ -31,13 +33,17 @@ public class StudentMapperTest extends AbstractTest {
 	
 	@Test
 	public void test02SelectStudentByAll() {
-		log.debug("test02SelectStudentByAll()");
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+//		log.debug("test02SelectStudentByAll()");
 		List<Student> list = dao.selectStudentByAll();
 		Assert.assertNotNull(list);
 	}
 	
 	@Test
 	public void test03InsertStudentAnnotation() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
 		Calendar newDate = GregorianCalendar.getInstance();
 		newDate.set(1990, 4, 28);
 		
@@ -55,6 +61,8 @@ public class StudentMapperTest extends AbstractTest {
 
 	@Test
 	public void test04UpdateStudent() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
 		Calendar newDate = GregorianCalendar.getInstance();
 		newDate.set(2000, 4, 28);
 		
@@ -71,25 +79,49 @@ public class StudentMapperTest extends AbstractTest {
 	
 	@Test
 	public void test05DeleteStudent() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
 		int res = dao.deleteStudent(3);
 		Assert.assertEquals(1, res);
 	}
 	
 	@Test
 	public void test06SelectStudentByAllForResults() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
 		List<Student> lists = dao.selectStudentByAllForResults();
 		Assert.assertNotNull(lists);
 	}
 	
 	@Test
 	public void test07SelectStudentByAllForResultsMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
 		List<Map<String, Object>> maps = dao.selectStudentByAllForResultMap();
 		Assert.assertNotNull(maps);
 	}
 	
 	@Test
 	public void test08SelectStudentByAllForMapper() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
 		List<Student> lists = dao.selectStudentByAllForMapper();
+		Assert.assertNotNull(lists);
+	}
+	
+	@Test
+	public void test09SelectStudentByAllForResultMapExt() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		List<Student> lists = dao.selectStudentByAllForResultMaxExt();
+		Assert.assertNotNull(lists);
+	}
+	
+	@Test
+	public void test10SelectStudentByAllForResultMapExtXML() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		List<Student> lists = dao.selectStudentByAllForResultMapExtXML();
 		Assert.assertNotNull(lists);
 	}
 }
