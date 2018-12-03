@@ -84,4 +84,11 @@ public class StudentMapperImpl implements StudentMapper {
 		}
 	}
 
+	@Override
+	public Student selectStudentByNoAssociation(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
+			return sqlSession.selectOne(Namespace + ".selectStudentByNoAssociation", student);
+		}
+	}
+
 }

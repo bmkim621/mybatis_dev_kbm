@@ -25,4 +25,7 @@ public interface StudentMapper {
 	Student selectStudentByNoForResultMapExtends(Student student);
 	
 	Student selectStudentByNoForResultMapExtends2(int studId);
+	
+	//내포된 결과 매핑(ResultMap)을 사용한 일대일 매핑
+	Student selectStudentByNoAssociation(Student student);
 }

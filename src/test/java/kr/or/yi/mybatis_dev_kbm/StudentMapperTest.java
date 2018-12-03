@@ -119,7 +119,20 @@ public class StudentMapperTest extends AbstractTest {
 	
 	@Test
 	public void test09SelectStudentByNoForResultMapExtends2() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
 		Student extStd = dao.selectStudentByNoForResultMapExtends2(1);
 		Assert.assertNotNull(extStd);
+	}
+	
+	@Test
+	public void test10SelectStudentByNoAssociation() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Student student = new Student();
+		student.setStudId(1);
+		
+		Student std = dao.selectStudentByNoAssociation(student);
+		Assert.assertNotNull(std);
 	}
 }
