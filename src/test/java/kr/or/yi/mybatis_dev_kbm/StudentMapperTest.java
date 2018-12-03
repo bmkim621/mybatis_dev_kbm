@@ -3,6 +3,7 @@ package kr.or.yi.mybatis_dev_kbm;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -72,5 +73,23 @@ public class StudentMapperTest extends AbstractTest {
 	public void test05DeleteStudent() {
 		int res = dao.deleteStudent(3);
 		Assert.assertEquals(1, res);
+	}
+	
+	@Test
+	public void test06SelectStudentByAllForResults() {
+		List<Student> lists = dao.selectStudentByAllForResults();
+		Assert.assertNotNull(lists);
+	}
+	
+	@Test
+	public void test07SelectStudentByAllForResultsMap() {
+		List<Map<String, Object>> maps = dao.selectStudentByAllForResultMap();
+		Assert.assertNotNull(maps);
+	}
+	
+	@Test
+	public void test08SelectStudentByAllForMapper() {
+		List<Student> lists = dao.selectStudentByAllForMapper();
+		Assert.assertNotNull(lists);
 	}
 }
