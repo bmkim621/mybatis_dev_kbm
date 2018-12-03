@@ -86,4 +86,13 @@ public class StudentMapperImpl implements StudentMapper {
 			return sqlSession.selectList(namespace + ".selectStudentByAllForResultMapExtXML");
 		}
 	}
+
+	
+	//매퍼 인터페이스 - 내포된 결과 매핑을 사용한 일대일 매핑
+	@Override
+	public Student selectStudentOneToOne(int studId) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
+			return sqlSession.selectOne(namespace + ".selectStudentOneToOne", studId);
+		}
+	}
 }

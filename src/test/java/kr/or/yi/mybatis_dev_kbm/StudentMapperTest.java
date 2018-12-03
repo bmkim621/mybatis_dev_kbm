@@ -124,4 +124,14 @@ public class StudentMapperTest extends AbstractTest {
 		List<Student> lists = dao.selectStudentByAllForResultMapExtXML();
 		Assert.assertNotNull(lists);
 	}
+	
+	
+	//매퍼 인터페이스 - 내포된 결과 매핑을 사용한 일대일 매핑
+	@Test
+	public void test11SelectStudentOneToOne() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Student student = dao.selectStudentOneToOne(1);
+		Assert.assertNotNull(student);
+	}
 }
