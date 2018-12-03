@@ -1345,3 +1345,56 @@
 [2018-11-30] <==    Columns: stud_id, name, email, phone, addr_id, street, city, state, zip, country
 [2018-11-30] <==        Row: 1, Timothy, timothy@gmail.com, 123-123-1234, 3, 710 N Cable Rd, Lima, OH, 45825, Allen
 [2018-11-30] <==      Total: 1
+[2018-12-03] testOpenSession()
+[2018-12-03] session org.apache.ibatis.session.defaults.DefaultSqlSession@48ecc1de
+[2018-12-03] test01selectStudentByNo()
+[2018-12-03] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students WHERE stud_id = ?; 
+[2018-12-03] ==> Parameters: 1(Integer)
+[2018-12-03] <==    Columns: studId, name, email, dob, phone
+[2018-12-03] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-12-03] <==      Total: 1
+[2018-12-03] test02selectByAll()
+[2018-12-03] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students 
+[2018-12-03] ==> Parameters: 
+[2018-12-03] <==    Columns: studId, name, email, dob, phone
+[2018-12-03] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-12-03] <==        Row: 2, Douglas, douglas@gmail.com, 1990-08-15, 789-456-1234
+[2018-12-03] <==      Total: 2
+[2018-12-03] ==>  Preparing: insert into students(stud_id, name, email, phone, dob) values(?, ?, ?, ?, ?); 
+[2018-12-03] ==> Parameters: 4(Integer), ȫ�浿1(String), test@test.co.kr(String), 010-456-7890(String), 1990-03-28 16:34:45.871(Timestamp)
+[2018-12-03] <==    Updates: 1
+[2018-12-03] ==>  Preparing: update students set name = ?, email = ?, phone = ?, dob = ? where stud_id = ?; 
+[2018-12-03] ==> Parameters: Timothy(String), test@test.co.kr(String), 123-123-1234(String), 2018-12-03 16:34:45.88(Timestamp), 4(Integer)
+[2018-12-03] <==    Updates: 1
+[2018-12-03] ==>  Preparing: delete from students where stud_id = ?; 
+[2018-12-03] ==> Parameters: 4(Integer)
+[2018-12-03] <==    Updates: 1
+[2018-12-03] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students 
+[2018-12-03] ==> Parameters: 
+[2018-12-03] <==    Columns: studId, name, email, dob, phone
+[2018-12-03] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-12-03] <==        Row: 2, Douglas, douglas@gmail.com, 1990-08-15, 789-456-1234
+[2018-12-03] <==      Total: 2
+[2018-12-03] ==>  Preparing: select stud_id as studId, name, email, dob, phone from students 
+[2018-12-03] ==> Parameters: 
+[2018-12-03] <==    Columns: studId, name, email, dob, phone
+[2018-12-03] <==        Row: 1, Timothy, timothy@gmail.com, 1988-04-25, 123-123-1234
+[2018-12-03] <==        Row: 2, Douglas, douglas@gmail.com, 1990-08-15, 789-456-1234
+[2018-12-03] <==      Total: 2
+[2018-12-03] ==>  Preparing: select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country from students s left outer join addresses a on s.ADDR_ID = a.ADDR_ID WHERE stud_id = ?; 
+[2018-12-03] ==> Parameters: 1(Integer)
+[2018-12-03] <==    Columns: stud_id, name, email, phone, addr_id, street, city, state, zip, country
+[2018-12-03] <==        Row: 1, Timothy, timothy@gmail.com, 123-123-1234, 3, 710 N Cable Rd, Lima, OH, 45825, Allen
+[2018-12-03] <==      Total: 1
+[2018-12-03] test09SelectStudentByNoForResultMapExtends2()
+[2018-12-03] ==>  Preparing: select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country from students s left outer join addresses a on s.ADDR_ID = a.ADDR_ID where stud_id = ?; 
+[2018-12-03] ==> Parameters: 1(Integer)
+[2018-12-03] <==    Columns: stud_id, name, email, phone, addr_id, street, city, state, zip, country
+[2018-12-03] <==        Row: 1, Timothy, timothy@gmail.com, 123-123-1234, 3, 710 N Cable Rd, Lima, OH, 45825, Allen
+[2018-12-03] <==      Total: 1
+[2018-12-03] test10SelectStudentByNoAssociation()
+[2018-12-03] ==>  Preparing: select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country from students s left outer join addresses a on s.ADDR_ID = a.ADDR_ID WHERE stud_id = ?; 
+[2018-12-03] ==> Parameters: 1(Integer)
+[2018-12-03] <==    Columns: stud_id, name, email, phone, addr_id, street, city, state, zip, country
+[2018-12-03] <==        Row: 1, Timothy, timothy@gmail.com, 123-123-1234, 3, 710 N Cable Rd, Lima, OH, 45825, Allen
+[2018-12-03] <==      Total: 1
