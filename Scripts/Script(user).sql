@@ -10,3 +10,6 @@ select * from students;
 delete from students where stud_id = 3;
 
 select addr_id as addrid, street, city, state, zip, country from addresses where addr_id=1;
+
+SELECT TUTOR_ID, NAME AS TUTOR_NAME, EMAIL, ADDR_ID FROM TUTORS WHERE TUTOR_ID = 1;
+SELECT COURSE_ID, NAME, DESCRIPTION, START_DATE, END_DATE FROM COURSES WHERE TUTOR_ID =1;
