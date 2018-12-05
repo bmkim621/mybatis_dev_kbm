@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</typeAliases>
 	
 	<typeHandlers>
+		<!-- <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="Gender"/> -->
 		<package name="kr.or.yi.mybatis_dev_kbm.typehandlers"/>
 	</typeHandlers>
 	

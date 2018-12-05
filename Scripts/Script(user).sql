@@ -24,3 +24,16 @@ select * from students;
 select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country
 from students s left outer join addresses a
 on s.ADDR_ID = a.ADDR_ID;
+
+alter table students add gender tinyint unsigned;
+
+-- 테이블 만들기
+create table userpic(
+	id integer auto_increment primary key,
+	name varcharacter(50),
+	pic longblob,
+	bio longtext
+);
+
+desc userpic;
+select * from userpic;

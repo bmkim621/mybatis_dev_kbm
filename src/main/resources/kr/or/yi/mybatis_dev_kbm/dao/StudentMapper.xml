@@ -118,4 +118,23 @@
 		<include refid="selectJoinAddressSql" />
 		<include refid="whereSql" />
 	</select>
+	
+	
+	<!-- enum 타입 다루기 -->
+	<sql id="insertEnumSql">
+		INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB, GENDER)
+		VALUES (#{studId}, #{name}, #{email}, #{phone}, #{dob}, #{gender})
+	</sql>
+	
+	<insert id="insertEnumStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="studId">
+		<include refid="insertEnumSql"></include>
+	</insert>
+	
+	<resultMap type="Student" id="StudentResultGender" extends="StudentResult">
+		<result property="gender" column="gender" />
+	</resultMap>
+	
+	<select id="selectStudentWithGender" resultMap="StudentResultGender">
+		select stud_id as studid, name, email, dob, phone, gender from students
+	</select>
 </mapper>
