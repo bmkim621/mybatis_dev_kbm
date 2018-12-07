@@ -32,4 +32,11 @@ public interface StudentMapper {
 	//enum 타입 다루기
 	int insertEnumStudent(Student student);
 	List<Student> selectStudentWithGender();
+	
+	//여러 개의 입력 파라미터 전달
+	List<Student> selectAllStudentByMap(Map<String, String> map);
+	
+	//ResultSet 처리 방식의 재정의
+	Map<Integer, String> selectStudentForMap();
+	Map<Integer, Student> selectStudentAllForMap();
 }

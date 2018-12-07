@@ -137,4 +137,40 @@
 	<select id="selectStudentWithGender" resultMap="StudentResultGender">
 		select stud_id as studid, name, email, dob, phone, gender from students
 	</select>
+	
+	<!-- 여러 개의 입력 파라미터 전달 -->
+	<sql id="selectParameterSql">
+		select stud_id, name, email, phone, dob, gender from students
+	</sql>
+	
+	<sql id="whereNameEmailSql">
+		<where>
+			<if test="name != null">
+				name = #{name}
+			</if>
+			<if test="email != null">
+				AND email = #{email}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="selectAllStudentByMap" parameterType="map" resultMap="StudentResultGender">
+		<include refid="selectParameterSql" />
+		<include refid="whereNameEmailSql" />
+	</select>
+	
+	<!-- ResultSet 처리 방식의 재정의 -->
+	<resultMap type="Student" id="studentIdName">
+		<id property="studId" column="stud_id" />
+		<result property="name" column="name" />
+	</resultMap>
+									<!-- 위에서 name, id로만 받았으니까 select 문장에도 id, name만 -->
+	<select id="selectStudentForMap" resultMap="studentIdName">
+		select stud_id, name from students
+	</select>
+	
+										<!-- gender 포함해서 다 받음 -->
+	<select id="selectStudentAllForMap" resultMap="StudentResultGender">
+		select stud_id, name, email, phone, dob, gender from students
+	</select>
 </mapper>

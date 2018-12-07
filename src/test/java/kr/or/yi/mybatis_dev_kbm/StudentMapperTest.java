@@ -3,6 +3,7 @@ package kr.or.yi.mybatis_dev_kbm;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -159,5 +160,51 @@ public class StudentMapperTest extends AbstractTest {
 		
 		List<Student> lists = dao.selectStudentWithGender();
 		Assert.assertNotEquals(0, lists.size());
+	}
+	
+	//매퍼 XML - 여러 개의 입력 파라미터
+	@Test
+	public void test13SelectAllStudentByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Map<String, String> maps = new HashMap<>();
+		maps.put("name", "test");
+		List<Student> list = dao.selectAllStudentByMap(maps);
+		Assert.assertNotNull(list);
+		maps.remove("name"); //또는 list.clear();
+		
+		maps.put("email", "timothy@gmail.com");
+		list.clear();
+		list = dao.selectAllStudentByMap(maps);
+		Assert.assertNotNull(list);
+		
+		maps.put("name", "Timothy");
+		list.clear();
+		list = dao.selectAllStudentByMap(maps);
+		Assert.assertNotNull(list);
+	}
+	
+	//매퍼 XML - ResultSet 처리방식의 재정의
+	@Test
+	public void test14SelectStudentForMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Map<Integer, String> map = dao.selectStudentForMap();
+		
+		for(Entry<Integer, String> entry : map.entrySet()) {
+			System.out.println(String.format("key(%s) - value(%s)%n", entry.getKey(), entry.getValue()));
+		}
+		Assert.assertNotNull(map);
+	}
+	
+	@Test
+	public void test15SelectStudentAllForMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Map<Integer, Student> map = dao.selectStudentAllForMap();
+		for(Entry<Integer, Student> entry : map.entrySet()) {
+			System.out.println(String.format("key(%s) - value(%s)%n", entry.getKey(), entry.getValue()));
+		}
+		Assert.assertNotNull(map);
 	}
 }

@@ -1,8 +1,11 @@
 package kr.or.yi.mybatis_dev_kbm.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.ResultContext;
+import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.yi.mybatis_dev_kbm.dto.Student;
@@ -105,6 +108,54 @@ public class StudentMapperImpl implements StudentMapper {
 	public List<Student> selectStudentWithGender() {
 		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
 			return sqlSession.selectList(Namespace + ".selectStudentWithGender");
+		}
+	}
+
+	//여러 개의 입력 파라미터
+	@Override
+	public List<Student> selectAllStudentByMap(Map<String, String> map) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
+			return sqlSession.selectList(Namespace + ".selectAllStudentByMap", map);
+		}
+	}
+
+	
+	//ResultSet 처리 방식의 재정의
+	@Override
+	//아이디, 이름
+	public Map<Integer, String> selectStudentForMap() {
+		Map<Integer, String> map = new HashMap<>();
+		
+		ResultHandler<Student> resultHandler = new ResultHandler<Student>() {
+			@Override
+			public void handleResult(ResultContext<? extends Student> resultContext) {
+				Student student = resultContext.getResultObject();
+				System.out.println("---- " + student);
+				map.put(student.getStudId(), student.getName());
+			}
+		};
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
+			sqlSession.select(Namespace + ".selectStudentForMap", resultHandler);
+			return map;
+		}
+	}
+
+	@Override
+	//아이디와 student 객체
+	public Map<Integer, Student> selectStudentAllForMap() {
+		Map<Integer, Student> map = new HashMap<>();
+		ResultHandler<Student> resultHandler = new ResultHandler<Student>() {
+			@Override
+			public void handleResult(ResultContext<? extends Student> resultContext) {
+				Student student = resultContext.getResultObject();
+				System.out.println("---- " + student);
+				map.put(student.getStudId(), student);
+			}
+		};
+		
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
+			sqlSession.select(Namespace + ".selectStudentAllForMap", resultHandler);
+			return map;
 		}
 	}
 }
